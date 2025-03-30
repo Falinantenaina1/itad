@@ -1,7 +1,9 @@
 
 const Trano = () => {
   return (
-    <div>Trano</div>
+    <div>Trano
+        <p>test</p>
+    </div>
   )
 }
 
