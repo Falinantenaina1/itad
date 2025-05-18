@@ -21,7 +21,7 @@ export const SignUp = async (req, res) => {
 
     const user = await User.create({ name, email, password: hashedPassword });
 
-    const token = await generateToken(user._id);
+    const token = await generateToken(user._id, user.role, res);
 
     session.commitTransaction();
 
@@ -54,7 +54,7 @@ export const SignIn = async (req, res) => {
         .json({ success: false, error: "Invalid Credentials" });
     }
 
-    await generateToken(user._id, res);
+    await generateToken(user._id, user.role, res);
 
     return res.status(200).json({
       success: true,
